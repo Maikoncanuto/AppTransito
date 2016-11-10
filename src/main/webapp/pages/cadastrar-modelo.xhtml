@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:form id="form-modelo">
+				<h:panelGrid>
+					<p:panelGrid columns="2">
+						<p:outputLabel value="DESCRIÇÃO DO MODELO:" for="modelo" />
+						<p:inputText value="#{modeloMB.modelo.descricaoModelo}" id="modelo" />
+	
+						<p:outputLabel value="CATEGORIA:" for="categoria" />
+						<p:selectOneMenu id="categoria" value="#{modeloMB.modelo.categoria}">
+							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
+							<f:selectItem itemLabel="ENTRADA" itemValue="ENTRADA" />
+							<f:selectItem itemLabel="HATCH PEQUENO" itemValue="HATCH PEQUENO" />
+							<f:selectItem itemLabel="HATCH MÉDIO" itemValue="HATCH MÉDIO" />
+							<f:selectItem itemLabel="SEDANS PEQUENOS" itemValue="SEDANS PEQUENOS" />
+							<f:selectItem itemLabel="SEDANS COMPACTOS" itemValue="SEDANS COMPACTOS" />
+							<f:selectItem itemLabel="SEDANS MÉDIOS" itemValue="SEDANS MÉDIOS" />
+							<f:selectItem itemLabel="SEDANS GRANDES" itemValue="SEDANS GRANDES" />
+							<f:selectItem itemLabel="SUV" itemValue="SUV" />
+							<f:selectItem itemLabel="SW MÉDIO" itemValue="SW MÉDIO" />
+							<f:selectItem itemLabel="SW GRANDE" itemValue="SW GRANDE" />
+							<f:selectItem itemLabel="MONOCAB" itemValue="MONOCAB" />
+							<f:selectItem itemLabel="GRANDCAB" itemValue="GRANDCAB" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+					<p:commandButton value="REGISTRAR" action="#{modeloMB.cadastrar()}" update="form-modelo"/>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

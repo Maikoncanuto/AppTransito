@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid>
+				<h:form id="form_veiculos">
+					<p:panelGrid columns="2">
+						<p:outputLabel value="UF" for="uf" />
+						<p:inputText value="#{veiculoMB.veiculo.uf}" id="uf" />
+	
+						<p:outputLabel value="PLACA" for="placa" />
+						<p:inputText value="#{veiculoMB.veiculo.placa}" id="placa" />
+	
+						<p:outputLabel for="proprietario" value="PROPRIETARIO " />
+						<p:selectOneMenu id="proprietario" value="#{veiculoMB.proprietarioID}">
+							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
+							<f:selectItems value="#{veiculoMB.proprietarios}" var="prop" itemLabel="#{prop.nome}" itemValue="#{prop.id}" />
+						</p:selectOneMenu>
+	
+						<p:outputLabel for="modelo" value="MODELO" />
+						<p:selectOneMenu id="modelo" value="#{veiculoMB.modeloID}">
+							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
+							<f:selectItems value="#{veiculoMB.modelos}" var="p" itemLabel="#{p.descricaoModelo}" itemValue="#{p.idModelo}" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+					<p:commandButton value="REGISTRAR" action="#{veiculoMB.cadastrar()}" update="form_veiculos" />
+				</h:form>
+			</h:panelGrid>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

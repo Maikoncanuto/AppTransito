@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid>
+				<h:form id="form-tipo">
+					<h:outputText value="CADASTRAR O TIPO DA INFRAÇÃO" />
+					<p:panelGrid columns="2">
+	
+						<h:outputLabel value="DESCRIÇÃO: " for="descricao" />
+						<h:inputText id="descricao" value="#{tipoinfracaoMB.tipo.descricaoTipoInfracao}" />
+	
+						<h:outputLabel value="VALOR: " for="valor" />
+						<h:inputText id="valor" value="#{tipoinfracaoMB.tipo.valor}" />
+	
+					</p:panelGrid>
+					<br />
+					<p:commandButton value="REGISTRAR" action="#{tipoinfracaoMB.cadastrar()}" update="form-tipo"/>
+				</h:form>
+			</h:panelGrid>
+			
+			<p:messages />
+			
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
