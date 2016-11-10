@@ -82,6 +82,10 @@ public class VeiculoBean implements Serializable {
 	public void setModeloID(Integer modeloID) {
 		this.modeloID = modeloID;
 	}
+	
+	public List<Veiculo> veiculos(){
+		return veiculoService.lista();
+	}
 
 
 }

@@ -13,25 +13,32 @@
 		<p:panel>
 			<h:panelGrid>
 				<h:form id="form_veiculos">
+					<h:outputText value="CADASTRO DE VEICULOS" />
+					<br/>
+					<br/>
 					<p:panelGrid columns="2">
 						<p:outputLabel value="UF" for="uf" />
-						<p:inputText value="#{veiculoMB.veiculo.uf}" id="uf" />
+						<p:inputText value="#{veiculoMB.veiculo.uf}" id="uf" maxlength="2" placeholder="UNIDADE FEDERATIVA" required="true"
+						requiredMessage="DIGITE A UNIDADE FEDERATIVA [U.F]"/>
 	
 						<p:outputLabel value="PLACA" for="placa" />
-						<p:inputText value="#{veiculoMB.veiculo.placa}" id="placa" />
+						<p:inputText value="#{veiculoMB.veiculo.placa}" id="placa" maxlength="7" placeholder="DIGITE A PLACA" required="true"
+						requiredMessage="DIGITE A PLACA "/>
 	
 						<p:outputLabel for="proprietario" value="PROPRIETARIO " />
-						<p:selectOneMenu id="proprietario" value="#{veiculoMB.proprietarioID}">
+						<p:selectOneMenu id="proprietario" value="#{veiculoMB.proprietarioID}" required="ESCOLHA UM PROPRIETÁRIO" 
+						requiredMessage="ESCOLHA UM PROPRIETÁRIO">
 							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 							<f:selectItems value="#{veiculoMB.proprietarios}" var="prop" itemLabel="#{prop.nome}" itemValue="#{prop.id}" />
 						</p:selectOneMenu>
 	
 						<p:outputLabel for="modelo" value="MODELO" />
-						<p:selectOneMenu id="modelo" value="#{veiculoMB.modeloID}">
+						<p:selectOneMenu id="modelo" value="#{veiculoMB.modeloID}" required="true" requiredMessage="ESCOLHA UM MODELO">
 							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 							<f:selectItems value="#{veiculoMB.modelos}" var="p" itemLabel="#{p.descricaoModelo}" itemValue="#{p.idModelo}" />
 						</p:selectOneMenu>
 					</p:panelGrid>
+					<br/>
 					<p:commandButton value="REGISTRAR" action="#{veiculoMB.cadastrar()}" update="form_veiculos" />
 				</h:form>
 			</h:panelGrid>

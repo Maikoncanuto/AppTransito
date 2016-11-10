@@ -9,9 +9,15 @@
 <h:head>
 </h:head>
 <h:body>
+	<div id="link2" style="margin-left: 40%;">
+		<img src="http://ipva2016.pro.br/wp-content/uploads/2015/03/Detran-DF.jpg" width="500px" height="150px"/>
+	</div>
 	<h:form>
 		<p:menubar>
+				<p:menuitem value="HOME" url="/index.xhtml"/>
+		
 				<p:submenu label="CADASTRO">
+				
 					<p:submenu label="AGENTE">
 							<p:menuitem value="AGENTE" url="/pages/cadastrar-agente.xhtml" />
 						</p:submenu>
@@ -28,10 +34,32 @@
 							<p:menuitem value="INFRAÇÃO" url="/pages/cadastrar-infracao.xhtml" />
 						</p:submenu>
 				</p:submenu>
+				
+				<p:submenu label="LISTAGEM">
+					<p:submenu label="AGENTE">
+						<p:menuitem value="AGENTE" url="/pages/listar-agente.xhtml" />
+					</p:submenu>
+					
+					<p:submenu label="VEICULOS">
+							<p:menuitem value="PROPRIETARIO" url="/pages/listar-proprietario.xhtml" />
+							<p:menuitem value="MODELO" url="/pages/listar-modelo.xhtml" />
+							<p:menuitem value="VEICULO" url="/pages/listar-veiculo.xhtml" />
+						</p:submenu>
+					
+						<p:submenu label="INFRAÇÕES">
+							<p:menuitem value="TIPO DE INFRAÇÃO" url="/pages/listar-tipoinfracao.xhtml" />
+							<p:menuitem value="LOCAL INFRAÇÃO" url="/pages/listar-localinfracao.xhtml" />
+						</p:submenu>
+					
+				</p:submenu>
 			</p:menubar>
 		
 	</h:form>
 	<ui:insert name="conteudo" />
 	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	
+	<div id="link1" style="margin-top:25%; margin-left: 40%;">
+		<img src="http://www.vagastidf.com.br/wp-content/uploads/2015/11/stefanini.jpg" width="250px" height="100px"/>
+	</div>
 </h:body>
 </html>

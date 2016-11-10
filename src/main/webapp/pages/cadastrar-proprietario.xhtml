@@ -16,50 +16,60 @@
 						<p:fieldset>
 							<p:panelGrid columns="2">
 								<p:outputLabel value="NOME" for="nome" />
-								<p:inputText id="nome" value="#{proprietarioMB.proprietario.nome}" />
+								<p:inputText id="nome" value="#{proprietarioMB.proprietario.nome}" required="true"
+								requiredMessage="DIGITE O NOME DO PROPRIETÁRIO" placeholder="NOME PROPRIETÁRIO" maxlength="50"/>
 		
 								<p:outputLabel value="SEXO" for="sexo" />
-								<p:selectOneMenu id="sexo"
-									value="#{proprietarioMB.proprietario.sexo}">
+								<p:selectOneMenu id="sexo" value="#{proprietarioMB.proprietario.sexo}" required="true" requiredMessage="ESCOLHA O SEXO">
 									<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 									<f:selectItem itemLabel="FEMININO" itemValue="FEMININO" />
 									<f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
 								</p:selectOneMenu>
 		
 								<p:outputLabel value="CPF" for="cpf" />
-								<p:inputMask id="cpf" value="#{proprietarioMB.proprietario.cpf}" mask="999.999.999-99" />
+								<p:inputMask id="cpf" value="#{proprietarioMB.proprietario.cpf}" mask="999.999.999-99" maxlength="20" required="true"
+								requiredMessage="DIGITE O CPF VÁLIDO" placeholder="DIGITE UM CPF"/>
 		
 								<p:outputLabel value="DATA NASCIMENTO" for="dataNascimentoProprietario" />
-								<p:calendar id="dataNascimentoProprietario" value="#{proprietarioMB.proprietario.dtNascimento}" />
+								<p:calendar id="dataNascimentoProprietario" value="#{proprietarioMB.proprietario.dtNascimento}" 
+								required="true" requiredMessage="ESCOLHA UM DATA" placeholder="ESCOLHA UMA DATA"/>
 							</p:panelGrid>
 						</p:fieldset>
+						<br/>
 		
 						<p:fieldset>
 							<p:panelGrid columns="2">
 								<p:outputLabel value="ENDEREÇO" for="endereco" />
-								<p:inputText id="endereco" value="#{proprietarioMB.proprietario.endereco.endereco}" />
+								<p:inputText id="endereco" value="#{proprietarioMB.proprietario.endereco.endereco}" 
+								required="true" requiredMessage="DIGITE UM ENDERÇO" maxlength="100" placeholder="DIGITE O ENDEREÇO"/>
 		
 								<p:outputLabel value="BAIRRO" for="bairro" />
-								<p:inputText id="bairro" value="#{proprietarioMB.proprietario.endereco.bairro}" />
+								<p:inputText id="bairro" value="#{proprietarioMB.proprietario.endereco.bairro}" 
+								required="true" requiredMessage="DIGITE UM BAIRRO" placeholder="DIGITE O ENDERÇO" maxlength="50"/>
 		
 								<p:outputLabel value="CIDADE" for="cidade" />
-								<p:inputText id="cidade" value="#{proprietarioMB.proprietario.endereco.cidade}" />
+								<p:inputText id="cidade" value="#{proprietarioMB.proprietario.endereco.cidade}" 
+								required="true" placeholder="DIGITE UMA CIDADE" requiredMessage="DIGITE UMA CIDADE"/>
 		
 								<p:outputLabel value="UF" for="uf" />
-								<p:inputText id="uf" value="#{proprietarioMB.proprietario.endereco.uf}" />
+								<p:inputText id="uf" value="#{proprietarioMB.proprietario.endereco.uf}" 
+								required="true" requiredMessage="DIGITE A UNIDADE FEDERATIVA" maxlength="2"
+								placeholder="DIGITE O A UNIDADE FEDERATIVA"/>
 							</p:panelGrid>
 						</p:fieldset>
-		
+						<br />
 						<p:fieldset>
 							<p:panelGrid columns="2">
 								<p:outputLabel value="DDD" for="ddd" />
-								<p:inputText id="ddd" value="#{proprietarioMB.telefone.id.ddd}" />
+								<p:inputText id="ddd" value="#{proprietarioMB.telefone.id.ddd}" required="true" requiredMessage="DIGITE O DDD"
+								placeholder="DIGITE O DDD"/>
 		
 								<p:outputLabel value="NÚMERO DO TELEFONE" for="numero" />
-								<p:inputText id="numero" value="#{proprietarioMB.telefone.id.numero}" />
+								<p:inputText id="numero" value="#{proprietarioMB.telefone.id.numero}" maxlength="9" required="true" 
+								requiredMessage="DIGITE O NÚMERO DE TELEFONE" placeholder="DIGITE O TELEFONE"/>
 		
 								<p:outputLabel value="TIPO DE TELEFONE" for="tipoTelefone" />
-								<p:selectOneMenu id="tipoTelefone" value="#{proprietarioMB.telefone.tipo}">
+								<p:selectOneMenu id="tipoTelefone" value="#{proprietarioMB.telefone.tipo}" required="true" requiredMessage="ESCOLHA O TIPO DE TELEFONE">
 									<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 									<f:selectItem itemLabel="RESIDENCIAL" itemValue="RESIDENCIA" />
 									<f:selectItem itemLabel="CELULAR" itemValue="CELULAR" />

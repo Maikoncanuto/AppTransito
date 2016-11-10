@@ -1,6 +1,7 @@
 package com.stefanini.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -38,6 +39,10 @@ public class TipoInfracaoBean implements Serializable {
 			e.printStackTrace();
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
+	}
+	
+	public List<TipoInfracao> tiposInfracoes(){
+		return tipoService.lista();
 	}
 
 }

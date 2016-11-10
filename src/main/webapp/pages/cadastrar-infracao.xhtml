@@ -18,31 +18,32 @@
 						<p:panelGrid columns="2">
 						
 							<p:outputLabel for="tipoInfracao" value="TIPO: " />
-							<p:selectOneMenu id="tipoInfracao" value="#{infracaoMB.tipoId}">
+							<p:selectOneMenu id="tipoInfracao" value="#{infracaoMB.tipoId}" required="true" requiredMessage="ESCOLHA UM TIPO DE INFRAÇÃO">
 								<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 								<f:selectItems value="#{infracaoMB.tipos()}" var="tipo" itemValue="#{tipo.id}" itemLabel="#{tipo.descricaoTipoInfracao} : Valor: #{tipo.valor}" />
 							</p:selectOneMenu>
 		
 							<p:outputLabel for="localInfracao" value="LOCAL: " />
-							<p:selectOneMenu id="localInfracao" value="#{infracaoMB.localId}">
+							<p:selectOneMenu id="localInfracao" value="#{infracaoMB.localId}" required="true" requiredMessage="ESCOLHA O LOCAL DA INFRAÇÃO">
 								<f:selectItem itemLabel="SELECIONE UM LOCAL" itemValue="" />
 								<f:selectItems value="#{infracaoMB.locais()}" itemValue="#{local.id}" itemLabel="#{local.descricaoLocalInfracao} : Velocidade permitida: #{local.velocidadePermitida}" var="local" />
 							</p:selectOneMenu>
 		
 							<p:outputLabel for="agenteInfracao" value="AGENTE: " />
-							<p:selectOneMenu id="agenteInfracao" value="#{infracaoMB.agenteId}">
+							<p:selectOneMenu id="agenteInfracao" value="#{infracaoMB.agenteId}" required="true" requiredMessage="ESCOLHA O AGENTE">
 								<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 								<f:selectItems value="#{infracaoMB.agentes()}" itemValue="#{agente.id}" itemLabel="#{agente.nome}" var="agente" />
 							</p:selectOneMenu>
 							
 							<p:outputLabel for="veiculoInfracao" value="PLACA: " />
-							<p:selectOneMenu id="veiculoInfracao" value="#{infracaoMB.veiculoId}">
+							<p:selectOneMenu id="veiculoInfracao" value="#{infracaoMB.veiculoId}" required="true" requiredMessage="ESCOLHA O VEICULO">
 								<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 								<f:selectItems value="#{infracaoMB.veiculos()}" itemValue="#{veiculo.id}" itemLabel="#{veiculo.placa}" var="veiculo" />
 							</p:selectOneMenu>
 		
 							<p:outputLabel value="VELOCIDADE:" for="velocidade" />
-							<p:inputText id="velocidade" value="#{infracaoMB.infracao.velocidade}" required="true" placeholder="DIGITE O NÚMERO DA PLACA"/>
+							<p:inputNumber id="velocidade" value="#{infracaoMB.infracao.velocidade}" 
+							required="true" placeholder="DIGITE A VELOCIDADE" requiredMessage="DIGITE A VELOCIDADE" maxValue="450"/>
 						</p:panelGrid>
 						<br />
 						<p:commandButton value="REGISTRAR" action="#{infracaoMB.cadastrar()}" update="form-infracao"/>

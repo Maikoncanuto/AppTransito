@@ -1,6 +1,7 @@
 package com.stefanini.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -39,6 +40,10 @@ public class LocalInfracaoBean implements Serializable {
 
 	public void setLocal(LocalInfracao local) {
 		this.local = local;
+	}
+	
+	public List<LocalInfracao> locais(){
+		return service.lista();
 	}
 
 }

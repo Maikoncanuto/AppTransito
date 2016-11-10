@@ -116,4 +116,8 @@ public class InfracaoBean implements Serializable {
 	public void setVeiculoId(Integer veiculoId) {
 		this.veiculoId = veiculoId;
 	}
+	
+	public List<Infracao> infracoes(){
+		return infracaoService.listarInfracoes();
+	}
 }

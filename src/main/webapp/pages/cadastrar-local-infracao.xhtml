@@ -14,11 +14,14 @@
 			<h:form id="form-local">
 				<h:panelGrid>
 					<h:outputText value="CADASTRAR O LOCAL DA INFRAÇÃO" />
+					<br />
 						<p:panelGrid columns="2">
-							<h:outputLabel value="DESCRIÇÃO DO LOCAL: " for="descricao" />
-							<h:inputText id="descricao" value="#{localinfracaoMB.local.descricaoLocalInfracao}" />
-							<h:outputLabel value="VELOCIDADE PERMITIDA: " for="velocidade" />
-							<h:inputText id="velocidade" value="#{localinfracaoMB.local.velocidadePermitida}" />
+							<p:outputLabel value="DESCRIÇÃO DO LOCAL: " for="descricao"/>
+							<p:inputText id="descricao" value="#{localinfracaoMB.local.descricaoLocalInfracao}" 
+							required="true" requiredMessage="DIGITE O LOCAL" maxlength="100" placeholder="LOCAL DA INFRAÇÃO"/>
+							<p:outputLabel value="VELOCIDADE PERMITIDA: " for="velocidade" />
+							<p:inputNumber id="velocidade" value="#{localinfracaoMB.local.velocidadePermitida}" required="true"
+							requiredMessage="DIGITE A VELOCIDADE PERMITIDA" maxValue="450" placeholder="VELOCIDADE DA VIA"/>
 						</p:panelGrid>
 						<br />
 					<p:commandButton value="REGISTRAR" action="#{localinfracaoMB.cadastrar()}" update="form-local"/>
