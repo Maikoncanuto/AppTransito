@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<ui:define name="conteudo">
+
+		<h:form>
+			<p:dataTable var="veiculo" value="#{veiculoMB.veiculos()}" rows="10"
+				paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="CÓDIGO">
+					<h:outputText value="#{veiculo.id}" />
+				</p:column>
+
+				<p:column headerText="MODELO">
+					<h:outputText value="#{veiculo.modelo.descricaoModelo}" />
+				</p:column>
+
+				<p:column headerText="PLACA">
+					<h:outputText value="#{veiculo.placa}" />
+				</p:column>
+
+				<p:column headerText="UF">
+					<h:outputText value="#{veiculo.uf}" />
+				</p:column>
+				
+				<p:column headerText="PROPRIETÁRIO">
+					<h:outputText value="#{veiculo.proprietario.nome}"/>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
