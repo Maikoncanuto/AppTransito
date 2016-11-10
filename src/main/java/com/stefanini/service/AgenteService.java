@@ -40,4 +40,9 @@ public class AgenteService {
 		this.agenteRepository.remover(agente);
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void remover(Integer id){
+		this.agenteRepository.remover(id);
+	}
+	
 }

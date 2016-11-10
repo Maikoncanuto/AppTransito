@@ -44,6 +44,7 @@ public class VeiculoBean implements Serializable {
 			veiculoService.incluir(veiculo);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
 		} catch (Exception e) {
+			e.printStackTrace();
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		

@@ -13,7 +13,7 @@
 		<p:panel>
 			<h:panelGrid>
 					<h:form id="form_proprietario">
-						<p:fieldset legend="PROPRIETARIO" >
+						<p:fieldset>
 							<p:panelGrid columns="2">
 								<p:outputLabel value="NOME" for="nome" />
 								<p:inputText id="nome" value="#{proprietarioMB.proprietario.nome}" />
@@ -34,7 +34,7 @@
 							</p:panelGrid>
 						</p:fieldset>
 		
-						<p:fieldset legend="ENDEREÇO">
+						<p:fieldset>
 							<p:panelGrid columns="2">
 								<p:outputLabel value="ENDEREÇO" for="endereco" />
 								<p:inputText id="endereco" value="#{proprietarioMB.proprietario.endereco.endereco}" />
@@ -50,7 +50,7 @@
 							</p:panelGrid>
 						</p:fieldset>
 		
-						<p:fieldset legend="TELEFONE">
+						<p:fieldset>
 							<p:panelGrid columns="2">
 								<p:outputLabel value="DDD" for="ddd" />
 								<p:inputText id="ddd" value="#{proprietarioMB.telefone.id.ddd}" />
@@ -68,7 +68,7 @@
 								<p:commandButton action="#{proprietarioMB.salvarTelefone}" value="SALVAR TELEFONE" update="@form" />
 							</p:panelGrid>
 						</p:fieldset>
-						<p:commandButton action="#{proprietarioMB.salvar()}" value="REGISTRAR" update="form_proprietario" />
+						<p:commandButton action="#{proprietarioMB.salvar()}" value="REGISTRAR" update="@form" />
 					</h:form>
 				</h:panelGrid>
 		</p:panel>

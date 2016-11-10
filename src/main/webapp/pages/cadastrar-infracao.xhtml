@@ -34,6 +34,12 @@
 								<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
 								<f:selectItems value="#{infracaoMB.agentes()}" itemValue="#{agente.id}" itemLabel="#{agente.nome}" var="agente" />
 							</p:selectOneMenu>
+							
+							<p:outputLabel for="veiculoInfracao" value="PLACA: " />
+							<p:selectOneMenu id="veiculoInfracao" value="#{infracaoMB.veiculoId}">
+								<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
+								<f:selectItems value="#{infracaoMB.veiculos()}" itemValue="#{veiculo.id}" itemLabel="#{veiculo.placa}" var="veiculo" />
+							</p:selectOneMenu>
 		
 							<p:outputLabel value="VELOCIDADE:" for="velocidade" />
 							<p:inputText id="velocidade" value="#{infracaoMB.infracao.velocidade}" required="true" placeholder="DIGITE O NÚMERO DA PLACA"/>

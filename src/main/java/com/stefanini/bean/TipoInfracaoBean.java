@@ -20,7 +20,7 @@ public class TipoInfracaoBean implements Serializable {
 	private TipoInfracao tipo;
 	
 	@Inject
-	private TipoService service;
+	private TipoService tipoService;
 
 	public TipoInfracao getTipo() {
 		return tipo;
@@ -32,7 +32,7 @@ public class TipoInfracaoBean implements Serializable {
 
 	public void cadastrar() {
 		try {
-			service.incluir(tipo);
+			tipoService.incluir(tipo);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
 		} catch (Exception e) {
 			e.printStackTrace();

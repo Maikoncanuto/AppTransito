@@ -42,8 +42,6 @@ public class InfracaoBean implements Serializable {
 	
 	@Inject
 	private VeiculoService veiculoService;
-
-	private Veiculo veiculo;
 	
 	private Integer agenteId;
 	private Integer localId;
@@ -52,8 +50,8 @@ public class InfracaoBean implements Serializable {
 
 	public void cadastrar() {
 		try {
-			infracao.setLocalInfracao(localService.buscar(localId));
 			infracao.setTipoinfracao(tipoService.buscar(tipoId));
+			infracao.setLocalInfracao(localService.buscar(localId));
 			infracao.setAgente(agenteService.buscar(agenteId));
 			infracao.setVeiculo(veiculoService.buscar(veiculoId));
 			infracaoService.incluir(infracao);
@@ -77,14 +75,6 @@ public class InfracaoBean implements Serializable {
 	
 	public List<Veiculo> veiculos(){
 		return this.veiculoService.lista();
-	}
-	
-	public void setVeiculo(Veiculo veiculo){
-		this.veiculo = veiculo;
-	}
-	
-	public Veiculo getVeiculo(){
-		return this.veiculo;
 	}
 
 	public Integer getAgenteId() {
@@ -126,5 +116,4 @@ public class InfracaoBean implements Serializable {
 	public void setVeiculoId(Integer veiculoId) {
 		this.veiculoId = veiculoId;
 	}
-
 }
