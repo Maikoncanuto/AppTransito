@@ -37,6 +37,9 @@ public class ProprietarioBean implements Serializable {
 	public void salvarTelefone() {
 		if (this.proprietario != null) {
 			this.proprietario.adicionarTelefone(telefone);
+			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+		}else{
+			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 	}
 
