@@ -31,7 +31,7 @@ public class LocalInfracaoBean implements Serializable {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
-		this.local = null;
+		this.local = new LocalInfracao();
 	}
 
 	public LocalInfracao getLocal() {

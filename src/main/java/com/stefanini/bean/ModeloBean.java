@@ -31,7 +31,7 @@ public class ModeloBean implements Serializable {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
-		this.modelo = null;
+		this.modelo = new Modelo();
 	}
 
 	public Modelo getModelo() {

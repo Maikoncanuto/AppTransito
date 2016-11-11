@@ -9,27 +9,69 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
-	<ui:define name="conteudo">
+	<div id="form_geral">
+		<ui:define name="conteudo">
+			<p:growl id="growl" showDetail="true" sticky="true" />
 
-		<h:form>
-			<p:dataTable var="tipo" value="#{tipoinfracaoMB.tiposInfracoes()}" rows="10"
-				paginator="true"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
-				<p:column headerText="CÓDIGO">
-					<h:outputText value="#{tipo.id}" />
-				</p:column>
+			<h:form id="form">
+				<p:dataTable var="tipo" value="#{tipoinfracaoMB.tiposInfracoes()}"
+					rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15"
+					emptyMessage="NENHUM REGISTRO ENCONTRADO">
 
-				<p:column headerText="DESCRIÇÃO DO TIPO INFRAÇÃO">
-					<h:outputText value="#{tipo.descricaoTipoInfracao}" />
-				</p:column>
+					<f:facet name="header">
+						<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
+					</f:facet>
 
-				<p:column headerText="VALOR">
-					<h:outputText value="#{tipo.valor}" />
-				</p:column>
+					<p:column headerText="CÓDIGO">
+						<h:outputText value="#{tipo.id}" />
+					</p:column>
 
-			</p:dataTable>
-		</h:form>
-	</ui:define>
+					<p:column headerText="DESCRIÇÃO DO TIPO INFRAÇÃO">
+						<h:outputText value="#{tipo.descricaoTipoInfracao}" />
+					</p:column>
+
+					<p:column headerText="VALOR">
+						<h:outputText value="#{tipo.valor}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+			<p:dialog header="TIPO INFRAÇÃO CADASTRO" widgetVar="dialogo"
+				draggable="false" resizable="false" modal="true" closable="false">
+				<h:form id="dialog_form">
+					<h:panelGrid>
+						<p:panelGrid columns="2">
+
+							<p:outputLabel value="DESCRIÇÃO: " for="descricao" />
+							<p:inputText id="descricao"
+								value="#{tipoinfracaoMB.tipo.descricaoTipoInfracao}"
+								required="true"
+								requiredMessage="DIGITE A DESCRIÇÃO DO TIPO DE INFRAÇÃO"
+								placeholder="TIPO DE INFRAÇÃO" />
+
+							<p:outputLabel value="VALOR: " for="valor" />
+							<p:inputNumber id="valor" value="#{tipoinfracaoMB.tipo.valor}"
+								required="true" requiredMessage="DIGITE O VALOR"
+								maxlength="9999999" placeholder="DIGITE O VALOR" />
+
+						</p:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<p:commandButton value="Salvar"
+							actionListener="#{tipoinfracaoMB.cadastrar()}"
+							update="form dialog_form growl"
+							oncomplete="PF('dialogo').hide();" />
+						<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"
+							update="dialog_form" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+		</ui:define>
+	</div>
 </ui:composition>
 </html>

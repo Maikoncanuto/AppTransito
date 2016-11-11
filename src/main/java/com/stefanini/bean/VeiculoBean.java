@@ -43,12 +43,15 @@ public class VeiculoBean implements Serializable {
 			veiculo.setModelo(modeloService.buscar(modeloID));
 			veiculoService.incluir(veiculo);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			
+			proprietarioID = -1;
+			modeloID = -1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
-		this.veiculo = null;
+		this.veiculo = new Veiculo();
 	}
 
 	public Veiculo getVeiculo() {

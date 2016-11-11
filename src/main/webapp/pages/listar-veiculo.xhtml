@@ -9,13 +9,22 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
+	
+	<div id="form_geral">
 	<ui:define name="conteudo">
-
-		<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />  
+	
+		<h:form id="form">
 			<p:dataTable var="veiculo" value="#{veiculoMB.veiculos()}" rows="10"
 				paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" emptyMessage="NENHUM REGISTRO ENCONTRADO">
+				
+				<f:facet name="header">
+					<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
+				</f:facet>
+				
+				
 				<p:column headerText="CÓDIGO">
 					<h:outputText value="#{veiculo.id}" />
 				</p:column>
@@ -37,6 +46,39 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		
+		<p:dialog header="VEICULOS CADASTRO" widgetVar="dialogo" draggable="false" resizable="false" modal="true" closable="false">
+		<h:form id="dialog_form">
+			<p:panelGrid columns="2">
+						<p:outputLabel value="UF" for="uf" />
+						<p:inputText value="#{veiculoMB.veiculo.uf}" id="uf" maxlength="2" placeholder="UNIDADE FEDERATIVA" required="true"
+						requiredMessage="DIGITE A UNIDADE FEDERATIVA [U.F]"/>
+	
+						<p:outputLabel value="PLACA" for="placa" />
+						<p:inputText value="#{veiculoMB.veiculo.placa}" id="placa" maxlength="7" placeholder="DIGITE A PLACA" required="true"
+						requiredMessage="DIGITE A PLACA "/>
+	
+						<p:outputLabel for="proprietario" value="PROPRIETARIO " />
+						<p:selectOneMenu id="proprietario" value="#{veiculoMB.proprietarioID}" required="ESCOLHA UM PROPRIETÁRIO" 
+						requiredMessage="ESCOLHA UM PROPRIETÁRIO">
+							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
+							<f:selectItems value="#{veiculoMB.proprietarios}" var="prop" itemLabel="#{prop.nome}" itemValue="#{prop.id}" />
+						</p:selectOneMenu>
+	
+						<p:outputLabel for="modelo" value="MODELO" />
+						<p:selectOneMenu id="modelo" value="#{veiculoMB.modeloID}" required="true" requiredMessage="ESCOLHA UM MODELO">
+							<f:selectItem itemLabel="SELECIONE UM" itemValue="" />
+							<f:selectItems value="#{veiculoMB.modelos}" var="p" itemLabel="#{p.descricaoModelo}" itemValue="#{p.idModelo}" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" actionListener="#{veiculoMB.cadastrar()}"  update="form dialog_form growl" oncomplete="PF('dialogo').hide();"/>
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" update="dialog_form"/>
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
 	</ui:define>
+	</div>
 </ui:composition>
 </html>

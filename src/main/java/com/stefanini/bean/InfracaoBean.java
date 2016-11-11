@@ -27,22 +27,22 @@ public class InfracaoBean implements Serializable {
 
 	@Inject
 	private Infracao infracao;
-	
+
 	@Inject
 	private InfracaoService infracaoService;
-	
+
 	@Inject
 	private TipoService tipoService;
-	
+
 	@Inject
 	private AgenteService agenteService;
-	
+
 	@Inject
 	private LocalInfracaoService localService;
-	
+
 	@Inject
 	private VeiculoService veiculoService;
-	
+
 	private Integer agenteId;
 	private Integer localId;
 	private Integer tipoId;
@@ -56,24 +56,31 @@ public class InfracaoBean implements Serializable {
 			infracao.setVeiculo(veiculoService.buscar(veiculoId));
 			infracaoService.incluir(infracao);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+
+			agenteId = -1;
+			localId = -1;
+			tipoId = -1;
+			veiculoId = -1;
 		} catch (Exception e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
+
+		this.infracao = new Infracao();
 	}
-	
-	public List<TipoInfracao> tipos(){
+
+	public List<TipoInfracao> tipos() {
 		return this.tipoService.lista();
 	}
-	
-	public List<LocalInfracao> locais(){
+
+	public List<LocalInfracao> locais() {
 		return this.localService.lista();
 	}
-	
-	public List<Agente> agentes(){
+
+	public List<Agente> agentes() {
 		return this.agenteService.lista();
 	}
-	
-	public List<Veiculo> veiculos(){
+
+	public List<Veiculo> veiculos() {
 		return this.veiculoService.lista();
 	}
 
@@ -116,8 +123,8 @@ public class InfracaoBean implements Serializable {
 	public void setVeiculoId(Integer veiculoId) {
 		this.veiculoId = veiculoId;
 	}
-	
-	public List<Infracao> infracoes(){
+
+	public List<Infracao> infracoes() {
 		return infracaoService.listarInfracoes();
 	}
 }

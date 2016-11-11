@@ -9,34 +9,86 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
-	<ui:define name="conteudo">
+	<div id="form_geral">
+		<ui:define name="conteudo">
+			<p:growl id="growl" showDetail="true" sticky="true" />
+			<h:form id="form">
+				<p:dataTable var="agente" value="#{agenteMB.agentes()}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15"
+					emptyMessage="NENHUM REGISTRO ENCONTRADO">
 
-		<h:form>
-			<p:dataTable var="agente" value="#{agenteMB.agentes()}" rows="10"
-				paginator="true"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
-				<p:column headerText="CÓDIGO">
-					<h:outputText value="#{agente.id}" />
-				</p:column>
+					<f:facet name="header">
+						<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
+					</f:facet>
 
-				<p:column headerText="NOME">
-					<h:outputText value="#{agente.nome}" />
-				</p:column>
+					<p:column headerText="CÓDIGO">
+						<h:outputText value="#{agente.id}" />
+					</p:column>
 
-				<p:column headerText="TEMPO DE SERVIÇO">
-					<h:outputText value="#{agente.tempoServico}" />
-				</p:column>
+					<p:column headerText="NOME">
+						<h:outputText value="#{agente.nome}" />
+					</p:column>
 
-				<p:column headerText="CPF">
-					<h:outputText value="#{agente.cpf}" />
-				</p:column>
-				
-				<p:column headerText="DATA CONTRATAÇÃO">
-					<h:outputText value="#{agente.dtContratacao}" patterns="dd/MM/yyyy"/>
-				</p:column>
-			</p:dataTable>
-		</h:form>
-	</ui:define>
+					<p:column headerText="TEMPO DE SERVIÇO">
+						<h:outputText value="#{agente.tempoServico}" />
+					</p:column>
+
+					<p:column headerText="CPF">
+						<h:outputText value="#{agente.cpf}" />
+					</p:column>
+
+					<p:column headerText="DATA CONTRATAÇÃO">
+						<h:outputText value="#{agente.dtContratacao}"
+							patterns="dd/MM/yyyy" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+			<p:dialog header="AGENTE CADASTRO" widgetVar="dialogo"
+				draggable="false" resizable="false" modal="true" closable="false">
+				<h:form id="dialog_form">
+					<h:panelGrid>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="NOME:" for="agenteNome" />
+							<p:inputText id="agenteNome" value="#{agenteMB.agente.nome}"
+								maxlength="100" required="true" requiredMessage="DIGITE O NOME"
+								placeholder="DIGITE O NOME" />
+
+							<p:outputLabel value="DATA CONTRATAÇÃO:"
+								for="agenteDataContratacao" />
+							<p:calendar id="agenteDataContratacao"
+								value="#{agenteMB.agente.dtContratacao}" maxlength="10"
+								yearRange="c-3:c+3" required="true"
+								requiredMessage="ESCOLHA UMA DATA"
+								placeholder="ESCOLHA UMA DATA" />
+
+							<p:outputLabel value="CPF:" for="agenteNomeCPF" />
+							<p:inputMask id="agenteNomeCPF" value="#{agenteMB.agente.cpf}"
+								mask="999.999.999-99" maxlength="20" required="true"
+								requiredMessage="DIGITE O CPF VÁLIDO"
+								placeholder="DIGITE UM CPF" />
+
+							<p:outputLabel value="TEMPO DE SERVIÇO:" for="agenteTempoServico" />
+							<p:inputNumber id="agenteTempoServico"
+								value="#{agenteMB.agente.tempoServico}" required="true"
+								requiredMessage="DIGITE O TEMPO DE SERVIÇO" maxValue="99999"
+								placeholder="DIG.TEMPO SERVIÇO" />
+						</p:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<p:commandButton value="Salvar"
+							actionListener="#{agenteMB.incluir()}"
+							update="form dialog_form growl"
+							oncomplete="PF('dialogo').hide();" />
+						<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"
+							update="dialog_form" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</ui:define>
+	</div>
 </ui:composition>
 </html>

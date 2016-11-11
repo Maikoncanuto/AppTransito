@@ -39,6 +39,8 @@ public class TipoInfracaoBean implements Serializable {
 			e.printStackTrace();
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
+		
+		this.tipo = new TipoInfracao();
 	}
 	
 	public List<TipoInfracao> tiposInfracoes(){

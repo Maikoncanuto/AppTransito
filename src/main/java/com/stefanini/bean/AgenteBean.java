@@ -33,7 +33,7 @@ public class AgenteBean implements Serializable {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
-		this.agente = null;
+		this.agente = new Agente();
 	}
 
 	//Metodos Getters and Setters

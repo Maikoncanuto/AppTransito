@@ -34,6 +34,9 @@ public class ProprietarioBean implements Serializable {
 		} catch (Exception e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
+		
+		this.proprietario = new Proprietario();
+		this.telefone = new Telefone();
 	}
 
 	public void salvarTelefone() {
@@ -42,7 +45,9 @@ public class ProprietarioBean implements Serializable {
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
 		}else{
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			this.telefone = new Telefone();
 		}
+
 	}
 
 	public Proprietario getProprietario() {
