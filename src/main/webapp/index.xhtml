@@ -11,6 +11,19 @@
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
 	<ui:define name="conteudo" style="font-size: 12px; text-align: center;">
+	<br/>
+	<br/>	
+		<div style="margin-left: 30%; position: relative;">
+			<p:chart type="pie" model="#{ChartView.mostrarGraficos1()}" style="width:700px;height:300px" />
+		</div>
+		<div style="margin-left: 30%; position: relative;">
+			<p:chart type="pie" model="#{ChartView.mostrarGraficos3()}" style="width:700px;height:300px" />
+		</div>
+	<br/>
+	<br/>	
+		<div style="margin-left: 30%; position: relative;">
+			<p:chart type="pie" model="#{ChartView.mostrarGraficos2()}" style="width:700px;height:300px" />
+		</div>
 		
 	</ui:define>
 </ui:composition>
