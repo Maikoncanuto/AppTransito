@@ -49,4 +49,8 @@ public class AgenteBean implements Serializable {
 		return agenteService.lista();
 	}
 	
+	public void excluir(){
+		agenteService.remover(agente);
+	}
+	
 }

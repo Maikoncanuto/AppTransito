@@ -23,16 +23,6 @@
 						<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
 					</f:facet>
 
-					<f:facet name="header">
-						<p:commandButton value="ALTERAR"
-							oncomplete="PF('dialogo_alterar').show();" />
-					</f:facet>
-
-					<f:facet name="header">
-						<p:commandButton value="REMOVER"
-							oncomplete="PF('dialogo_remover').show();" />
-					</f:facet>
-
 					<p:column headerText="CÓDIGO">
 						<h:outputText value="#{agente.id}" />
 					</p:column>
@@ -53,8 +43,7 @@
 						<h:outputText value="#{agente.dtContratacao}"
 							patterns="dd/MM/yyyy" />
 					</p:column>
-
-
+				
 				</p:dataTable>
 			</h:form>
 

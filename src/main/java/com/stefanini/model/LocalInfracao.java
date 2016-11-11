@@ -19,6 +19,25 @@ public class LocalInfracao implements java.io.Serializable {
 	private Integer id;
 	private String descricaoLocalInfracao;
 	private Double velocidadePermitida;
+	
+	private Double longitude;
+	private Double lagitude;
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Double getLagitude() {
+		return lagitude;
+	}
+
+	public void setLagitude(Double lagitude) {
+		this.lagitude = lagitude;
+	}
 
 	public LocalInfracao() {
 	}
