@@ -27,7 +27,7 @@ public class LocalInfracaoBean implements Serializable {
 		try {
 			service.incluir(local);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		

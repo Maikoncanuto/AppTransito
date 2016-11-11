@@ -35,7 +35,7 @@ public class TipoInfracaoBean implements Serializable {
 		try {
 			tipoService.incluir(tipo);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}

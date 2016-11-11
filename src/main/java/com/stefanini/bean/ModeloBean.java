@@ -27,7 +27,7 @@ public class ModeloBean implements Serializable {
 		try {
 			modeloService.incluir(modelo);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		

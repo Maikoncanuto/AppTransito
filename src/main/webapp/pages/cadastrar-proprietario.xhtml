@@ -9,7 +9,9 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
+	<div id="form_geral">
 	<ui:define name="conteudo">
+		<p:growl id="growl" showDetail="true" sticky="true" /> 
 		<p:panel>
 			<h:panelGrid>
 					<h:form id="form_proprietario">
@@ -78,10 +80,11 @@
 								<p:commandButton action="#{proprietarioMB.salvarTelefone}" value="SALVAR TELEFONE" update="@form" />
 							</p:panelGrid>
 						</p:fieldset>
-						<p:commandButton action="#{proprietarioMB.salvar()}" value="REGISTRAR" update="@form" />
+						<p:commandButton action="#{proprietarioMB.salvar()}" value="REGISTRAR" update="@form growl" />
 					</h:form>
 				</h:panelGrid>
 		</p:panel>
 	</ui:define>
+	</div>
 </ui:composition>
 </html>

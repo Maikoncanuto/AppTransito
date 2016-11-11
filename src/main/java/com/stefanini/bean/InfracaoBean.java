@@ -61,7 +61,7 @@ public class InfracaoBean implements Serializable {
 			localId = -1;
 			tipoId = -1;
 			veiculoId = -1;
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 

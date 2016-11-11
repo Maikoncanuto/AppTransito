@@ -9,9 +9,9 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
- 	
+ <div id="form_geral">
 	<ui:define name="conteudo">
-		<p:growl id="growl" showDetail="true" sticky="true" />  
+		<p:growl id="growl" showDetail="true" sticky="true" /> 
 	
 		<p:panel>
 			<h:form id="form_agente">
@@ -35,11 +35,12 @@
 						<p:inputNumber id="agenteTempoServico" value="#{agenteMB.agente.tempoServico}" 
 						required="true" requiredMessage="DIGITE O TEMPO DE SERVIÇO" maxValue="99999" placeholder="DIG.TEMPO SERVIÇO"/>
 					</p:panelGrid>
-					<p:commandButton value="REGISTRAR" action="#{agenteMB.incluir()}"  update="form_agente" />
+					<p:commandButton value="REGISTRAR" action="#{agenteMB.incluir()}"  update="form_agente growl" />
 				</h:panelGrid>
 			</h:form>
 		</p:panel>
 		
 	</ui:define>
+	</div>
 </ui:composition>
 </html>

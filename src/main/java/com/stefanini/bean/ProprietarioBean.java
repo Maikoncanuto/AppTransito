@@ -31,7 +31,7 @@ public class ProprietarioBean implements Serializable {
 		try {
 			proprietarioService.incluir(proprietario);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		

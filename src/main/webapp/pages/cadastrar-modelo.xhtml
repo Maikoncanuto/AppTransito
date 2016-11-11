@@ -9,7 +9,9 @@
 <h:head>
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
+	<div id="form_geral">
 	<ui:define name="conteudo">
+		<p:growl id="growl" showDetail="true" sticky="true" /> 
 		<p:panel>
 			<h:form id="form-modelo">
 				<h:panelGrid>
@@ -37,10 +39,11 @@
 							<f:selectItem itemLabel="GRANDCAB" itemValue="GRANDCAB" />
 						</p:selectOneMenu>
 					</p:panelGrid>
-					<p:commandButton value="REGISTRAR" action="#{modeloMB.cadastrar()}" update="form-modelo"/>
+					<p:commandButton value="REGISTRAR" action="#{modeloMB.cadastrar()}" update="form-modelo growl"/>
 				</h:panelGrid>
 			</h:form>
 		</p:panel>
 	</ui:define>
+	</div>
 </ui:composition>
 </html>

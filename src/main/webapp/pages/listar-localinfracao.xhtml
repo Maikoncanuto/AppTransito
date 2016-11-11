@@ -10,55 +10,76 @@
 </h:head>
 <ui:composition template="/WEB-INF/_template.xhtml">
 	<div id="form_geral">
-	<ui:define name="conteudo">
-		<p:growl id="growl" showDetail="true" sticky="true" />  
+		<ui:define name="conteudo">
+			<p:growl id="growl" showDetail="true" sticky="true" />
 
-		<h:form id="form">
-			<p:dataTable var="local" value="#{localinfracaoMB.locais()}" rows="10"
-				paginator="true"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" emptyMessage="NENHUM REGISTRO ENCONTRADO">
-				
-				<f:facet name="header">
-					<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
-				</f:facet>
-				
-				<p:column headerText="CÓDIGO">
-					<h:outputText value="#{local.id}" />
-				</p:column>
+			<h:form id="form">
+				<p:dataTable var="local" value="#{localinfracaoMB.locais()}"
+					rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15"
+					emptyMessage="NENHUM REGISTRO ENCONTRADO"
+					style="text-align: center;">
 
-				<p:column headerText="DESCRIÇÃO">
-					<h:outputText value="#{local.descricaoLocalInfracao}" />
-				</p:column>
+					<f:facet name="header">
+						<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
+					</f:facet>
 
-				<p:column headerText="VELOCIDADE PERMITIDA">
-					<h:outputText value="#{local.velocidadePermitida}" />
-				</p:column>
-			</p:dataTable>
-		</h:form>
-		
-		
-		<p:dialog header="LOCAL INFRAÇÃO CADASTRO" widgetVar="dialogo" draggable="false" resizable="false" modal="true" closable="false">
-			<h:form id="dialog_form">
-				<h:panelGrid>
-						<p:panelGrid columns="2">
-							<p:outputLabel value="DESCRIÇÃO DO LOCAL: " for="descricao"/>
-							<p:inputText id="descricao" value="#{localinfracaoMB.local.descricaoLocalInfracao}" 
-							required="true" requiredMessage="DIGITE O LOCAL" maxlength="100" placeholder="LOCAL DA INFRAÇÃO"/>
-							<p:outputLabel value="VELOCIDADE PERMITIDA: " for="velocidade" />
-							<p:inputNumber id="velocidade" value="#{localinfracaoMB.local.velocidadePermitida}" required="true"
-							requiredMessage="DIGITE A VELOCIDADE PERMITIDA" maxValue="450" placeholder="VELOCIDADE DA VIA"/>
-						</p:panelGrid>
-				</h:panelGrid>
-				
-				<h:panelGrid columns="2">
-				<p:commandButton value="Salvar" actionListener="#{localinfracaoMB.cadastrar()}"  update="form dialog_form growl" oncomplete="PF('dialogo').hide();"/>
-				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" update="dialog_form"/>
-			</h:panelGrid>
+					<f:facet name="header">
+						<p:commandButton value="ALTERAR"
+							oncomplete="PF('dialogo_alterar').show();" />
+					</f:facet>
+
+					<f:facet name="header">
+						<p:commandButton value="REMOVER"
+							oncomplete="PF('dialogo_remover').show();" />
+					</f:facet>
+
+					<p:column headerText="CÓDIGO">
+						<h:outputText value="#{local.id}" />
+					</p:column>
+
+					<p:column headerText="DESCRIÇÃO">
+						<h:outputText value="#{local.descricaoLocalInfracao}" />
+					</p:column>
+
+					<p:column headerText="VELOCIDADE PERMITIDA">
+						<h:outputText value="#{local.velocidadePermitida}" />
+					</p:column>
+				</p:dataTable>
 			</h:form>
-		</p:dialog>
-		
-	</ui:define>
+
+
+			<p:dialog header="LOCAL INFRAÇÃO CADASTRO" widgetVar="dialogo"
+				draggable="false" resizable="false" modal="true" closable="false">
+				<h:form id="dialog_form">
+					<h:panelGrid>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="DESCRIÇÃO DO LOCAL: " for="descricao" />
+							<p:inputText id="descricao"
+								value="#{localinfracaoMB.local.descricaoLocalInfracao}"
+								required="true" requiredMessage="DIGITE O LOCAL" maxlength="100"
+								placeholder="LOCAL DA INFRAÇÃO" />
+							<p:outputLabel value="VELOCIDADE PERMITIDA: " for="velocidade" />
+							<p:inputNumber id="velocidade"
+								value="#{localinfracaoMB.local.velocidadePermitida}"
+								required="true" requiredMessage="DIGITE A VELOCIDADE PERMITIDA"
+								maxValue="450" placeholder="VELOCIDADE DA VIA" />
+						</p:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<p:commandButton value="Salvar"
+							actionListener="#{localinfracaoMB.cadastrar()}"
+							update="form dialog_form growl"
+							oncomplete="PF('dialogo').hide();" />
+						<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"
+							update="dialog_form" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+		</ui:define>
 	</div>
 </ui:composition>
 </html>

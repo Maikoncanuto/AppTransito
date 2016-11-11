@@ -29,7 +29,7 @@ public class AgenteBean implements Serializable {
 			agenteService.incluir(agente);
 			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
 			FacesUtil.getContext().getExternalContext().invalidateSession();
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
 		

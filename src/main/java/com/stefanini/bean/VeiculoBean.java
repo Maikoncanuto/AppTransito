@@ -46,7 +46,7 @@ public class VeiculoBean implements Serializable {
 			
 			proprietarioID = -1;
 			modeloID = -1;
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
 		}
