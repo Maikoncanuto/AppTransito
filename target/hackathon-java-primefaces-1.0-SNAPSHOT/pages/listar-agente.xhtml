@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<div id="form_geral">
+		<ui:define name="conteudo">
+
+			<h:form id="form">
+				<p:dataTable var="agente" value="#{agenteMB.agentes()}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15"
+					emptyMessage="NENHUM REGISTRO ENCONTRADO"
+					style="text-align: center;">
+
+					<f:facet name="header">
+						<p:commandButton value="NOVO" oncomplete="PF('dialogo').show();" />
+					</f:facet>
+
+					<p:column headerText="CÓDIGO">
+						<h:outputText value="#{agente.id}" />
+					</p:column>
+
+					<p:column headerText="NOME">
+						<h:outputText value="#{agente.nome}" />
+					</p:column>
+
+					<p:column headerText="TEMPO DE SERVIÇO">
+						<h:outputText value="#{agente.tempoServico}" />
+					</p:column>
+
+					<p:column headerText="CPF">
+						<h:outputText value="#{agente.cpf}" />
+					</p:column>
+
+					<p:column headerText="DATA CONTRATAÇÃO">
+						<h:outputText value="#{agente.dtContratacao}"
+							patterns="dd/MM/yyyy" />
+					</p:column>
+
+					<p:column headerText="ALTERAR">
+						<p:column headerText="EDITAR" exportable="false">
+							<p:commandButton oncomplete="PF('dialogo_alterar').show()"
+								icon="ui-icon-pencil" update="formEditar">
+								<f:setPropertyActionListener target="#{agenteMB.agente}"
+									value="#{agente}" />
+							</p:commandButton>
+						</p:column>
+					</p:column>
+
+					<p:column headerText="REMOVER">
+						<p:commandButton action="#{agenteMB.excluir(agente)}"
+							update="form growl" icon="ui-icon-circle-close" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+
+
+			<p:dialog header="AGENTE CADASTRO" widgetVar="dialogo"
+				draggable="false" resizable="false" modal="true" closable="false"
+				dynamic="true">
+				<h:form id="dialog_form">
+					<h:panelGrid>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="NOME:" for="agenteNome" />
+							<p:inputText id="agenteNome" value="#{agenteMB.agente.nome}"
+								maxlength="100" required="true" requiredMessage="DIGITE O NOME"
+								placeholder="NOME" autocomplete="false" />
+
+							<p:outputLabel value="DATA CONTRATAÇÃO:"
+								for="agenteDataContratacao" />
+							<p:calendar id="agenteDataContratacao"
+								value="#{agenteMB.agente.dtContratacao}" maxlength="10"
+								yearRange="c-3:c+3" required="true"
+								requiredMessage="ESCOLHA UMA DATA" placeholder="DATA"
+								autocomplete="false" />
+
+							<p:outputLabel value="CPF:" for="agenteNomeCPF" />
+							<p:inputMask id="agenteNomeCPF" value="#{agenteMB.agente.cpf}"
+								mask="999.999.999-99" maxlength="16" required="true"
+								requiredMessage="DIGITE O CPF VÁLIDO" placeholder="CPF"
+								autocomplete="false" />
+
+							<p:outputLabel value="TEMPO DE SERVIÇO:" for="agenteTempoServico" />
+							<p:inputNumber id="agenteTempoServico"
+								value="#{agenteMB.agente.tempoServico}" required="true"
+								requiredMessage="DIGITE O TEMPO DE SERVIÇO" maxValue="99999"
+								placeholder="TEMPO SERVIÇO" autocomplete="false" />
+						</p:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<p:commandButton value="SALVAR"
+							actionListener="#{agenteMB.incluir()}"
+							update="form dialog_form growl"
+							oncomplete="PF('dialogo').hide();" />
+						<p:commandButton value="FECHAR" oncomplete="PF('dialogo').hide();"
+							update="dialog_form form" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+			<p:dialog header="ALTERANDO AGENTE" widgetVar="dialogo_alterar"
+				draggable="false" resizable="false" modal="true" closable="false"
+				dynamic="true">
+				<h:form id="formEditar">
+					<h:panelGrid>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="NOME:" for="agenteNome" />
+							<p:inputText id="agenteNome" value="#{agenteMB.agente.nome}"
+								maxlength="100" required="true" requiredMessage="DIGITE O NOME"
+								placeholder="NOME" autocomplete="false" />
+
+							<p:outputLabel value="DATA CONTRATAÇÃO:"
+								for="agenteDataContratacao" />
+							<p:calendar id="agenteDataContratacao"
+								value="#{agenteMB.agente.dtContratacao}" maxlength="10"
+								yearRange="c-3:c+3" required="true"
+								requiredMessage="ESCOLHA UMA DATA" placeholder="DATA"
+								autocomplete="false" />
+
+							<p:outputLabel value="CPF:" for="agenteNomeCPF" />
+							<p:inputMask id="agenteNomeCPF" value="#{agenteMB.agente.cpf}"
+								mask="999.999.999-99" maxlength="16" required="true"
+								requiredMessage="DIGITE O CPF VÁLIDO" placeholder="CPF"
+								autocomplete="false" />
+
+							<p:outputLabel value="TEMPO DE SERVIÇO:" for="agenteTempoServico" />
+							<p:inputNumber id="agenteTempoServico"
+								value="#{agenteMB.agente.tempoServico}" required="true"
+								requiredMessage="DIGITE O TEMPO DE SERVIÇO" maxValue="99999"
+								placeholder="TEMPO SERVIÇO" autocomplete="false" />
+						</p:panelGrid>
+					</h:panelGrid>
+
+					<p:commandButton id="alterar" ajax="false" value="ALTERAR"
+						actionListener="#{agenteMB.alterar()}" update="form growl">
+						<f:setPropertyActionListener target="#{agenteMB.agente}"
+							value="#{agenteMB.agente}" />
+					</p:commandButton>
+				</h:form>
+			</p:dialog>
+
+
+
+		</ui:define>
+	</div>
+</ui:composition>
+</html>

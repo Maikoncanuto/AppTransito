@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head>
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyCJEV7cgGJ8wLPKXw0WEIFbvemKwnQTMQI" 
+              type="text/javascript"></script>
+
+</h:head>
+<h:body>
+	<div id="logo_link_stefanini">
+		<h:graphicImage value="/resources/img/tela.PNG" width="100%"/>
+	</div>
+	
+	<h:form>
+		<p:menubar style="text-align: center;">
+				<p:menuitem value="HOME" url="/index.xhtml" icon="ui-icon-check"/>
+		
+				<p:submenu label="CADASTRO" icon="ui-icon-document">
+				
+					<p:submenu label="AGENTE">
+							<p:menuitem value="AGENTE" url="/pages/cadastrar-agente.xhtml" />
+						</p:submenu>
+						
+						<p:submenu label="VEICULOS">
+							<p:menuitem value="PROPRIETARIO" url="/pages/cadastrar-proprietario.xhtml" />
+							<p:menuitem value="MODELO" url="/pages/cadastrar-modelo.xhtml" />
+							<p:menuitem value="VEICULO" url="/pages/cadastrar-veiculo.xhtml" />
+						</p:submenu>
+					
+						<p:submenu label="INFRAÇÕES">
+							<p:menuitem value="TIPO DE INFRAÇÃO" url="/pages/cadastrar-tipo-infracao.xhtml" />
+							<p:menuitem value="LOCAL INFRAÇÃO" url="/pages/cadastrar-local-infracao.xhtml" />
+							<p:menuitem value="INFRAÇÃO" url="/pages/cadastrar-infracao.xhtml" />
+						</p:submenu>
+				</p:submenu>
+				
+				<p:submenu label="LISTAGEM" icon="ui-icon-pencil">
+					<p:submenu label="AGENTE">
+						<p:menuitem value="AGENTE" url="/pages/listar-agente.xhtml" />
+					</p:submenu>
+					
+					<p:submenu label="VEICULOS">
+							<p:menuitem value="PROPRIETARIO" url="/pages/listar-proprietario.xhtml" />
+							<p:menuitem value="MODELO" url="/pages/listar-modelo.xhtml" />
+							<p:menuitem value="VEICULO" url="/pages/listar-veiculo.xhtml" />
+						</p:submenu>
+					
+						<p:submenu label="INFRAÇÕES">
+							<p:menuitem value="TIPO DE INFRAÇÃO" url="/pages/listar-tipoinfracao.xhtml" />
+							<p:menuitem value="LOCAL INFRAÇÃO" url="/pages/listar-localinfracao.xhtml" />
+						</p:submenu>
+					
+				</p:submenu>
+			</p:menubar>
+		
+	</h:form>
+	
+	
+	
+	<ui:insert name="conteudo" />
+	<p:growl id="growl" showDetail="true" sticky="true" life="500"/>
+	
+
+</h:body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<div id="form_geral">
+	<ui:define name="conteudo">
+		<p:growl id="growl" showDetail="true" sticky="true" /> 
+		<p:panel>
+			<h:panelGrid>
+				<h:form id="form-tipo">
+					<h:outputText value="CADASTRAR O TIPO DA INFRAÇÃO" />
+					<br/>
+					<br/>
+					<p:panelGrid columns="2">
+					
+						<p:outputLabel value="DESCRIÇÃO: " for="descricao" />
+						<p:inputText id="descricao"
+							value="#{tipoinfracaoMB.tipo.descricaoTipoInfracao}"
+							required="true" requiredMessage="DIGITE A DESCRIÇÃO DO TIPO DE INFRAÇÃO" placeholder="TIPO DE INFRAÇÃO"/>
+
+						<p:outputLabel value="VALOR: " for="valor" />
+						<p:inputNumber id="valor" value="#{tipoinfracaoMB.tipo.valor}" 
+						required="true" requiredMessage="DIGITE O VALOR" maxlength="9999999" placeholder="DIGITE O VALOR"/>
+
+					</p:panelGrid>
+					<br />
+					<p:commandButton value="REGISTRAR"
+						action="#{tipoinfracaoMB.cadastrar()}" update="form-tipo growl" />
+				</h:form>
+			</h:panelGrid>
+
+			<p:messages />
+
+		</p:panel>
+	</ui:define>
+	</div>
+</ui:composition>
+</html>

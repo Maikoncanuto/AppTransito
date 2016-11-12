@@ -1,11 +1,12 @@
 package com.stefanini.model;
-// Generated 07/11/2016 12:06:19 by Hibernate Tools 4.3.1.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,17 +22,26 @@ public class Agente implements java.io.Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idAgente", unique = true, nullable = false)
 	private Integer id;
+	
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dtContratacao", length = 10)
 	private Date dtContratacao;
+	
+	@Column(name = "tempoServico")
 	private Integer tempoServico;
+	
+	@Column(name = "cpf", length = 16, nullable = false, unique = true)
 	private String cpf;
 
 	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(String cpf) {		
+		this.cpf = cpf.toUpperCase();
 	}
 
 	public Integer getId() {
@@ -42,17 +52,14 @@ public class Agente implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "nome", length = 100)
 	public String getNome() {
 		return this.nome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "dtContratacao", length = 10)
 	public Date getDtContratacao() {
 		return this.dtContratacao;
 	}
@@ -61,7 +68,6 @@ public class Agente implements java.io.Serializable {
 		this.dtContratacao = dtContratacao;
 	}
 
-	@Column(name = "tempoServico")
 	public Integer getTempoServico() {
 		return this.tempoServico;
 	}

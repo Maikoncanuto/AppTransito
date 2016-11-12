@@ -23,7 +23,6 @@ public class AgenteBean implements Serializable {
 	@Inject
 	private AgenteService agenteService;
 
-
 	public void incluir() {
 		try {
 			agenteService.incluir(agente);
@@ -35,7 +34,18 @@ public class AgenteBean implements Serializable {
 		
 		this.agente = new Agente();
 	}
-
+	
+	public void alterar(){
+		try{
+			agenteService.alterar(agente);
+			FacesUtil.exibeSucesso("REGISTRO ALTERADO COM SUCESSO");
+			this.agente = new Agente();
+		}catch (RuntimeException e) {
+			FacesUtil.exibeErro("PROBLEMA AO ALTERAR REGISTRO");
+		}
+	}
+	
+	
 	//Metodos Getters and Setters
 	public Agente getAgente() {
 		return agente;
@@ -49,8 +59,13 @@ public class AgenteBean implements Serializable {
 		return agenteService.lista();
 	}
 	
-	public void excluir(){
-		agenteService.remover(agente);
+	public void excluir(Agente agente){
+		try{
+			agenteService.remover(agente);
+			FacesUtil.exibeSucesso("REGISTRO REMOVIDO COM SUCESSO");
+		}catch (Exception e) {
+			FacesUtil.exibeErro("PROBLEMA AO REMOVER REGISTRO");
+		}
 	}
 	
 }

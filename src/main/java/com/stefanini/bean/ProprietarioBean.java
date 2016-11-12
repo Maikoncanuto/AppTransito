@@ -49,6 +49,15 @@ public class ProprietarioBean implements Serializable {
 		}
 
 	}
+	
+	public void excluir(Proprietario proprietario){
+		try{
+			proprietarioService.remover(proprietario);
+			FacesUtil.exibeSucesso("REGISTRO REMOVIDO COM SUCESSO");
+		}catch(RuntimeException e){
+			FacesUtil.exibeErro("PROBLEMA AO REMOVER REGISTRO");
+		}
+	}
 
 	public Proprietario getProprietario() {
 		return proprietario;

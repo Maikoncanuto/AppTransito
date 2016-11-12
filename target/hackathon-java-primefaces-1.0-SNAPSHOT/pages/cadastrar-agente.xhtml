@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/WEB-INF/_template.xhtml">
+ <div id="form_geral">
+	<ui:define name="conteudo">
+		<p:growl id="growl" showDetail="true" sticky="true" /> 
+	
+		<p:panel>
+			<h:form id="form_agente">
+				<h:panelGrid>
+					<p:panelGrid columns="2">
+						<p:outputLabel value="NOME:" for="agenteNome" />
+						<p:inputText id="agenteNome" value="#{agenteMB.agente.nome}" maxlength="100" 
+						required="true" requiredMessage="DIGITE O NOME" placeholder="DIGITE O NOME"/>
+	
+						<p:outputLabel value="DATA CONTRATAÇÃO:" for="agenteDataContratacao" />
+						<p:calendar  id="agenteDataContratacao" value="#{agenteMB.agente.dtContratacao}" maxlength="10" yearRange="c-3:c+3" 
+						required="true" requiredMessage="ESCOLHA UMA DATA" placeholder="ESCOLHA UMA DATA"/>
+						
+						<p:outputLabel value="CPF:" for="agenteNomeCPF" />
+							<p:inputMask id="agenteNomeCPF" value="#{agenteMB.agente.cpf}"
+								mask="999.999.999-99" maxlength="20" required="true"
+								requiredMessage="DIGITE O CPF VÁLIDO"
+								placeholder="DIGITE UM CPF" />
+						
+						<p:outputLabel value="TEMPO DE SERVIÇO:" for="agenteTempoServico" />
+						<p:inputNumber id="agenteTempoServico" value="#{agenteMB.agente.tempoServico}" 
+						required="true" requiredMessage="DIGITE O TEMPO DE SERVIÇO" maxValue="99999" placeholder="DIG.TEMPO SERVIÇO"/>
+					</p:panelGrid>
+					<p:commandButton value="REGISTRAR" action="#{agenteMB.incluir()}"  update="form_agente growl" />
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+		
+	</ui:define>
+	</div>
+</ui:composition>
+</html>
