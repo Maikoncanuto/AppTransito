@@ -1,4 +1,4 @@
-package com.stefanini.util;
+package br.com.mk.util;
 
 import java.io.Serializable;
 
@@ -7,15 +7,14 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.mk.model.Agente;
+import br.com.mk.model.LocalInfracao;
+import br.com.mk.model.TipoInfracao;
+import br.com.mk.service.AgenteService;
+import br.com.mk.service.LocalInfracaoService;
+import br.com.mk.service.TipoService;
 import org.primefaces.model.chart.PieChartModel;
 
-import com.stefanini.model.Agente;
-import com.stefanini.model.LocalInfracao;
-import com.stefanini.model.TipoInfracao;
-import com.stefanini.service.AgenteService;
-import com.stefanini.service.LocalInfracaoService;
-import com.stefanini.service.TipoService;
- 
 @Named("ChartView")
 @SessionScoped
 public class ChartsBean implements Serializable {
@@ -85,7 +84,7 @@ public class ChartsBean implements Serializable {
         }
         
         
-        pieModel1.setTitle("GR¡FICO DE INFRA«’ES: MAIORES VELOCIDADES");
+        pieModel1.setTitle("GR√ÅFICO DE INFRA√á√ïES: MAIORES VELOCIDADES");
         pieModel1.setLegendPosition("w");
         
         return pieModel1;
@@ -98,7 +97,7 @@ public class ChartsBean implements Serializable {
         	pieModel2.set(m.getDescricaoLocalInfracao(), m.getVelocidadePermitida());
         }
         
-        pieModel2.setTitle("GR¡FICO LOCAIS DE INFRA«’ES: LOCAIS VELOCIDADES");
+        pieModel2.setTitle("GR√ÅFICO LOCAIS DE INFRA√á√ïES: LOCAIS VELOCIDADES");
         pieModel2.setLegendPosition("w");
         
         return pieModel2;
@@ -111,7 +110,7 @@ public class ChartsBean implements Serializable {
         	pieModel3.set(m.getNome(), m.getTempoServico());
         }
         
-        pieModel3.setTitle("GR¡FICO AGENTES: AGENTE POR TEMPO DE SERVI«O");
+        pieModel3.setTitle("GR√ÅFICO AGENTES: AGENTE POR TEMPO DE SERVI√áO");
         pieModel3.setLegendPosition("w");
         
         return pieModel3;
