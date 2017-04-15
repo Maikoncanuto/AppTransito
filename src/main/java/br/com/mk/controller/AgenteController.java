@@ -1,4 +1,4 @@
-package com.stefanini.controller;
+package br.com.mk.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.stefanini.model.Agente;
-import com.stefanini.service.AgenteService;
+import br.com.mk.service.AgenteService;
+import br.com.mk.model.Agente;
 
 @Path("/agente")
 @RequestScoped
