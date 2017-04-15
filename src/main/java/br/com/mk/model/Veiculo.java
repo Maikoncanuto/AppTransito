@@ -1,4 +1,4 @@
-package com.stefanini.model;
+package br.com.mk.model;
 // Generated 07/11/2016 12:06:19 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;

@@ -1,4 +1,4 @@
-package com.stefanini.model;
+package br.com.mk.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
