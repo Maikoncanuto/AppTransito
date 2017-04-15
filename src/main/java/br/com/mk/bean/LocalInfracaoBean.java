@@ -1,20 +1,19 @@
-package com.stefanini.bean;
+package br.com.mk.bean;
 
-import java.io.Serializable;
-import java.util.List;
+import br.com.mk.util.FacesUtil;
+import br.com.mk.model.LocalInfracao;
+import br.com.mk.service.LocalInfracaoService;
+import br.com.mk.util.FacesProducer;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.model.map.DefaultMapModel;
-import org.primefaces.model.map.LatLng;
-import org.primefaces.model.map.MapModel;
-
-import com.stefanini.model.LocalInfracao;
-import com.stefanini.service.LocalInfracaoService;
-import com.stefanini.util.FacesUtil;
+import java.io.Serializable;
+import java.util.List;
 
 @Named("localinfracaoMB")
 @RequestScoped
@@ -48,11 +47,11 @@ public class LocalInfracaoBean implements Serializable {
 			System.out.println(lat);
 			System.out.println(lng);
 			service.incluir(local);
-			FacesUtil.getContext().getExternalContext().invalidateSession();
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesProducer.getExternalContext().invalidateSession();
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 		} catch (Exception e) {
 			e.printStackTrace();
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO.");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO.");
 		}
 	}
 
@@ -63,7 +62,6 @@ public class LocalInfracaoBean implements Serializable {
 	public void setLocal(LocalInfracao local) {
 		this.local = local;
 	}
-
 
 	public MapModel getEmptyModel() {
 		return emptyModel;
@@ -95,7 +93,6 @@ public class LocalInfracaoBean implements Serializable {
 
 	public void addMarker() {
 		new LatLng(lat, lng);
-
 	}
 
 	public List<LocalInfracao> locais(){

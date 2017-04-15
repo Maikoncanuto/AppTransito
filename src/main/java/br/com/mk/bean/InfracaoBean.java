@@ -1,4 +1,4 @@
-package com.stefanini.bean;
+package br.com.mk.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,17 +7,17 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.stefanini.model.Agente;
-import com.stefanini.model.Infracao;
-import com.stefanini.model.LocalInfracao;
-import com.stefanini.model.TipoInfracao;
-import com.stefanini.model.Veiculo;
-import com.stefanini.service.AgenteService;
-import com.stefanini.service.InfracaoService;
-import com.stefanini.service.LocalInfracaoService;
-import com.stefanini.service.TipoService;
-import com.stefanini.service.VeiculoService;
-import com.stefanini.util.FacesUtil;
+import br.com.mk.model.LocalInfracao;
+import br.com.mk.model.Veiculo;
+import br.com.mk.service.InfracaoService;
+import br.com.mk.service.TipoService;
+import br.com.mk.util.FacesUtil;
+import br.com.mk.model.Agente;
+import br.com.mk.model.Infracao;
+import br.com.mk.model.TipoInfracao;
+import br.com.mk.service.AgenteService;
+import br.com.mk.service.LocalInfracaoService;
+import br.com.mk.service.VeiculoService;
 
 @Named("infracaoMB")
 @SessionScoped
@@ -55,17 +55,21 @@ public class InfracaoBean implements Serializable {
 			infracao.setAgente(agenteService.buscar(agenteId));
 			infracao.setVeiculo(veiculoService.buscar(veiculoId));
 			infracaoService.incluir(infracao);
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 
 			agenteId = -1;
 			localId = -1;
 			tipoId = -1;
 			veiculoId = -1;
 		} catch (RuntimeException e) {
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO");
 		}
 
 		this.infracao = new Infracao();
+	}
+
+	public List<Infracao> infracoes() {
+		return infracaoService.listarInfracoes();
 	}
 
 	public List<TipoInfracao> tipos() {
@@ -124,7 +128,4 @@ public class InfracaoBean implements Serializable {
 		this.veiculoId = veiculoId;
 	}
 
-	public List<Infracao> infracoes() {
-		return infracaoService.listarInfracoes();
-	}
 }

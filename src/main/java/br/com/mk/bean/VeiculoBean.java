@@ -1,4 +1,4 @@
-package com.stefanini.bean;
+package br.com.mk.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,13 +7,13 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.stefanini.model.Modelo;
-import com.stefanini.model.Proprietario;
-import com.stefanini.model.Veiculo;
-import com.stefanini.service.ModeloService;
-import com.stefanini.service.ProprietarioService;
-import com.stefanini.service.VeiculoService;
-import com.stefanini.util.FacesUtil;
+import br.com.mk.model.Modelo;
+import br.com.mk.model.Proprietario;
+import br.com.mk.model.Veiculo;
+import br.com.mk.service.ModeloService;
+import br.com.mk.service.ProprietarioService;
+import br.com.mk.service.VeiculoService;
+import br.com.mk.util.FacesUtil;
 
 @Named("veiculoMB")
 @SessionScoped
@@ -42,13 +42,13 @@ public class VeiculoBean implements Serializable {
 			veiculo.setProprietario(proprietarioService.buscar(proprietarioID));
 			veiculo.setModelo(modeloService.buscar(modeloID));
 			veiculoService.incluir(veiculo);
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 			
 			proprietarioID = -1;
 			modeloID = -1;
 		} catch (RuntimeException e) {
 			e.printStackTrace();
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
 		this.veiculo = new Veiculo();
@@ -89,6 +89,4 @@ public class VeiculoBean implements Serializable {
 	public List<Veiculo> veiculos(){
 		return veiculoService.lista();
 	}
-
-
 }

@@ -1,4 +1,4 @@
-package com.stefanini.bean;
+package br.com.mk.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,10 +7,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.stefanini.model.Proprietario;
-import com.stefanini.model.Telefone;
-import com.stefanini.service.ProprietarioService;
-import com.stefanini.util.FacesUtil;
+import br.com.mk.model.Proprietario;
+import br.com.mk.service.ProprietarioService;
+import br.com.mk.util.FacesUtil;
+import br.com.mk.model.Telefone;
 
 @Named("proprietarioMB")
 @SessionScoped
@@ -30,9 +30,9 @@ public class ProprietarioBean implements Serializable {
 	public void salvar() {
 		try {
 			proprietarioService.incluir(proprietario);
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 		} catch (RuntimeException e) {
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
 		this.proprietario = new Proprietario();
@@ -42,9 +42,9 @@ public class ProprietarioBean implements Serializable {
 	public void salvarTelefone() {
 		if (this.proprietario != null) {
 			this.proprietario.adicionarTelefone(telefone);
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 		}else{
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO");
 			this.telefone = new Telefone();
 		}
 
@@ -53,9 +53,9 @@ public class ProprietarioBean implements Serializable {
 	public void excluir(Proprietario proprietario){
 		try{
 			proprietarioService.remover(proprietario);
-			FacesUtil.exibeSucesso("REGISTRO REMOVIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO REMOVIDO COM SUCESSO");
 		}catch(RuntimeException e){
-			FacesUtil.exibeErro("PROBLEMA AO REMOVER REGISTRO");
+			FacesUtil.error("PROBLEMA AO REMOVER REGISTRO");
 		}
 	}
 
@@ -78,5 +78,4 @@ public class ProprietarioBean implements Serializable {
 	public List<Proprietario> proprietarios(){
 		return proprietarioService.lista();
 	}
-
 }

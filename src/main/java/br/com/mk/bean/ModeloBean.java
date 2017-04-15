@@ -1,4 +1,4 @@
-package com.stefanini.bean;
+package br.com.mk.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,9 +7,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.stefanini.model.Modelo;
-import com.stefanini.service.ModeloService;
-import com.stefanini.util.FacesUtil;
+import br.com.mk.model.Modelo;
+import br.com.mk.service.ModeloService;
+import br.com.mk.util.FacesUtil;
 
 @Named("modeloMB")
 @SessionScoped
@@ -26,9 +26,9 @@ public class ModeloBean implements Serializable {
 	public void cadastrar() {
 		try {
 			modeloService.incluir(modelo);
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 		} catch (RuntimeException e) {
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
 		this.modelo = new Modelo();
@@ -45,7 +45,4 @@ public class ModeloBean implements Serializable {
 	public List<Modelo> modelos(){
 		return this.modeloService.lista();
 	}
-	
-
-
 }

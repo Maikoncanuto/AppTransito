@@ -1,4 +1,4 @@
-package com.stefanini.bean;
+package br.com.mk.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,9 +7,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.stefanini.model.TipoInfracao;
-import com.stefanini.service.TipoService;
-import com.stefanini.util.FacesUtil;
+import br.com.mk.service.TipoService;
+import br.com.mk.util.FacesUtil;
+import br.com.mk.model.TipoInfracao;
 
 @Named("tipoinfracaoMB")
 @RequestScoped
@@ -34,10 +34,10 @@ public class TipoInfracaoBean implements Serializable {
 	public void cadastrar() {
 		try {
 			tipoService.incluir(tipo);
-			FacesUtil.exibeSucesso("REGISTRO INSERIDO COM SUCESSO");
+			FacesUtil.sucesso("REGISTRO INSERIDO COM SUCESSO");
 		} catch (RuntimeException e) {
 			e.printStackTrace();
-			FacesUtil.exibeErro("PROBLEMA AO INSERIR REGISTRO");
+			FacesUtil.error("PROBLEMA AO INSERIR REGISTRO");
 		}
 		
 		this.tipo = new TipoInfracao();
@@ -46,5 +46,4 @@ public class TipoInfracaoBean implements Serializable {
 	public List<TipoInfracao> tiposInfracoes(){
 		return tipoService.lista();
 	}
-
 }
