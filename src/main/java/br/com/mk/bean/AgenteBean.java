@@ -24,7 +24,7 @@ public class AgenteBean implements Serializable {
 	@Inject
 	private AgenteService agenteService;
 
-	//Métodos do bean
+	//Métodos do beann
 	public void incluir() {
 		try {
 			agenteService.incluir(agente);
