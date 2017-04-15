@@ -1,4 +1,4 @@
-package com.stefanini.application;
+package br.com.mk.application;
 
 
 import javax.ws.rs.ApplicationPath;
