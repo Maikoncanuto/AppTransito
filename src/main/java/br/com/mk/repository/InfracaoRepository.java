@@ -1,11 +1,11 @@
-package com.stefanini.repository;
+package br.com.mk.repository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.stefanini.model.Infracao;
+import br.com.mk.model.Infracao;
 
 public class InfracaoRepository {
 
@@ -25,7 +25,7 @@ public class InfracaoRepository {
 	}
 
 	public List<Infracao> lista() {
-		return this.manager.createQuery("select l from Infracoes l", Infracao.class).getResultList();
+		return this.manager.createQuery("select l from Infracao l", Infracao.class).getResultList();
 	}
 	
 	public void remover(Infracao infracoes){

@@ -1,11 +1,11 @@
-package com.stefanini.repository;
+package br.com.mk.repository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.stefanini.model.Veiculo;
+import br.com.mk.model.Veiculo;
 
 public class VeiculoRepository {
 

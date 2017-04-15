@@ -1,10 +1,11 @@
-package com.stefanini.repository;
+package br.com.mk.repository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import com.stefanini.model.Agente;
+
+import br.com.mk.model.Agente;
 
 public class AgenteRepository {
 

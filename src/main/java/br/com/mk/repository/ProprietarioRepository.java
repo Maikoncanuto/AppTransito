@@ -1,11 +1,11 @@
-package com.stefanini.repository;
+package br.com.mk.repository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.stefanini.model.Proprietario;
+import br.com.mk.model.Proprietario;
 
 public class ProprietarioRepository {
 
