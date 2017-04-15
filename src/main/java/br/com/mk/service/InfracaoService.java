@@ -1,5 +1,6 @@
-package com.stefanini.service;
+package br.com.mk.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -7,11 +8,11 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
-import com.stefanini.model.Infracao;
-import com.stefanini.repository.InfracaoRepository;
+import br.com.mk.model.Infracao;
+import br.com.mk.repository.InfracaoRepository;
 
 @Stateless
-public class InfracaoService {
+public class InfracaoService implements Serializable{
 
 	@Inject
 	private InfracaoRepository infracaoRepository;

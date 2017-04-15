@@ -1,16 +1,17 @@
-package com.stefanini.service;
+package br.com.mk.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
-import com.stefanini.model.Agente;
-import com.stefanini.repository.AgenteRepository;
+import br.com.mk.model.Agente;
+import br.com.mk.repository.AgenteRepository;
 
 @Stateless
-public class AgenteService {
+public class AgenteService implements Serializable{
 
 	@Inject
 	private AgenteRepository agenteRepository;

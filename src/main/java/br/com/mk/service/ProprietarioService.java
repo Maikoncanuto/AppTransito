@@ -1,16 +1,18 @@
-package com.stefanini.service;
+package br.com.mk.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
-import com.stefanini.model.Proprietario;
-import com.stefanini.repository.ProprietarioRepository;
+
+import br.com.mk.model.Proprietario;
+import br.com.mk.repository.ProprietarioRepository;
 
 @Stateless
-public class ProprietarioService {
+public class ProprietarioService implements Serializable{
 
 	@Inject
 	private ProprietarioRepository proprietarioRepository;
