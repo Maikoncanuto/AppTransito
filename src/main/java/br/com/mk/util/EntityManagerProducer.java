@@ -1,4 +1,4 @@
-package com.stefanini.util;
+package br.com.mk.util;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
@@ -11,7 +11,7 @@ import javax.persistence.PersistenceUnit;
 @ApplicationScoped
 public class EntityManagerProducer {
 
-	@PersistenceUnit(unitName="hackathonDS")
+	@PersistenceUnit(unitName="datasource")
 	private EntityManagerFactory factory;
 
 	@Produces @RequestScoped
@@ -19,7 +19,8 @@ public class EntityManagerProducer {
 		return factory.createEntityManager();
 	}
 
-	public void close(@Disposes EntityManager manager){
-		manager.close();
+	public void close(@Disposes EntityManager entityManager){
+		if(entityManager != null && entityManager.isOpen())
+			entityManager.close();
 	}
 }
